@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+    --maincolor:#4B3EC4;
+    --mainfont: "Inter", serif;
+}
+body{
+    font-family: var(--mainfont);
+    background-color: #f9f9f9;
+    height: 4000px;
+}

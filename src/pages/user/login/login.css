@@ -1,0 +1,74 @@
+.login-left{
+    width: calc(45% - 30px) !important;
+}
+.login-right{
+    width: calc(55% - 30px) !important;
+}
+.login{
+    background-color: #fff;
+}
+.welcome span:first-child{
+    color: var(--maincolor);
+}
+.welcome span:last-child{
+    color: #999999;
+}
+.btn{
+    background-color:  var(--maincolor);
+    padding: 11px 35px;
+    font-family: var(--mainfont);
+    width: fit-content;
+}
+.btn:hover{
+    background-color: var(--maincolor);
+    color: white;
+}
+span{
+    font-family: var(--mainfont);
+}
+span a{
+    color: var(--maincolor);
+    text-decoration: none;
+}
+
+.log span {
+    color: #999;
+}
+
+
+@media screen and (max-width: 1180px) {
+    .login-left{
+        width: calc(48% - 20px) !important;
+    }
+    .login-left{
+        width: calc(49% - 30px) !important;
+    }
+    
+}
+@media screen and (max-width: 992px) {
+    .login{
+        flex-direction: column !important;
+        gap: 35px !important;
+        justify-content: center !important;
+    }
+    .login-left{
+        width:100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        
+    }
+    
+    .login-right{
+        width: 100% !important;
+    }
+    
+}
+@media screen and (max-width: 500px) {
+
+    .login-left img{
+        width: 80% !important;
+        
+    }
+   
+    
+}

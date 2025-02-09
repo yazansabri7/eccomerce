@@ -1,10 +1,10 @@
 import React from 'react'
-import CustomNavbar from './components/user/navbar/CustomNavbar'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AuthLayout from './layout/AuthLayout';
 import DashboardLayout from './layout/DashboardLayout';
 import Register from './pages/user/register/register';
 import Login from './pages/user/login/Login';
+import { ToastContainer } from 'react-toastify';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -33,6 +33,7 @@ export default function App() {
   );
   return (
     <>
+    <ToastContainer/>
     <RouterProvider router={router} />
     </>
   )
