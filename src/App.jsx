@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AuthLayout from './layout/AuthLayout';
 import DashboardLayout from './layout/DashboardLayout';
-import Register from './pages/user/register/register';
+import Register from './pages/user/register/Register';
 import Login from './pages/user/login/Login';
 import { ToastContainer } from 'react-toastify';
 

@@ -9,7 +9,7 @@ import { Bounce, Slide, toast } from "react-toastify";
 import registerImage from "../../../assets/login.png";
 import '../register/register.css'
 
-export default function register() {
+export default function Register() {
   const navigate = useNavigate();
   const [error , setError] = useState('');
   const [loading , setLoading] = useState(false);
