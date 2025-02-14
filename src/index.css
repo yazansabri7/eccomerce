@@ -6,6 +6,9 @@
 }
 body{
     font-family: var(--mainfont);
-    background-color: #E2E4EB;
+    background-color: #fff;
     height: 4000px;
+}
+a{
+    text-decoration: none;
 }

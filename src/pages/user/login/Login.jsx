@@ -47,7 +47,7 @@ export default function Login() {
         Home / pages / <span className="fw-bold">Login</span>
       </div>
 
-      <div className="login container d-flex align-items-center gap-1 flex-wrap w-100 py-5">
+      <div className="login container d-flex align-items-center gap-1 flex-wrap w-100 py-5 rounded shadow-sm">
         <div className="login-left">
           <img src={loginImage} alt="" />
         </div>
@@ -72,7 +72,7 @@ export default function Login() {
               </FloatingLabel>
               <div className="already d-flex flex-column gap-3">
 
-              <Button className="mt-3 btn" type="submit" disabled={loading}>
+              <Button className="mt-3 btn2" type="submit" disabled={loading} onClick={(() => window.scroll(0,0))}>
                {loading ? "LOADING ..." : "LOGIN"}
               </Button>
               <div className="log d-flex align-items-center">

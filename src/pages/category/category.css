@@ -1,0 +1,13 @@
+
+
+
+
+@media screen and (max-width:740px){
+    .category-list{
+        flex-direction: column !important;
+        gap: 50px;
+    }
+    .popular{
+        text-align: center !important;
+    }
+}

@@ -1,5 +1,5 @@
-.footer{
-    background-color:#fff;
+.footer1{
+    background-color:#fff !important;
 }
 .hotline span:last-child{
     color: var(--maincolor);
@@ -17,7 +17,7 @@
 
 @media screen and (max-width:992px){
     .footer{
-        flex-direction: column;
+        flex-direction: column !important;
     }
     .footer-first{
         width: 100%;

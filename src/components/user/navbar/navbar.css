@@ -1,0 +1,30 @@
+.cart img{
+    width: 8%;
+}
+.nav-link{
+    color: #000 !important; 
+    
+}
+.nav-link:hover{
+    color: #fff !important ;
+    background-color: var(--maincolor);
+    border-radius:5px;
+}
+.dropdown-item:hover{
+    color: #fff !important ;
+    background-color: var(--maincolor);
+    border-radius:5px;
+    
+}
+
+
+
+
+@media screen and (max-width : 992px){
+    .cart{
+        display: none !important;
+    }
+    .cart-word{
+        display: flex !important;
+    }
+}

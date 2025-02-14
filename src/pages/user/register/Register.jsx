@@ -71,7 +71,7 @@ export default function Register() {
       <div className="bg-light-subtle rounded py-4 container shadow-sm mb-5 bg-body-tertiary rounded d-flex justify-content-start mb-3">
         Home / pages / <span className="fw-bold"> Register</span>
       </div>
-      <div className="register container py-5 d-flex align-items-center gap-1 flex-wrap w-100 ">
+      <div className="register container py-5 d-flex align-items-center gap-1 flex-wrap w-100 rounded shadow-sm ">
         <div className="register-left ">
           <img src={registerImage} alt="" />
         </div>
@@ -105,7 +105,7 @@ export default function Register() {
               </FloatingLabel>
               <div className="already d-flex flex-column gap-3">
 
-              <Button className="mt-3 btn " type="submit" disabled={loading}>
+              <Button className="mt-3 btn " type="submit" disabled={loading} onClick={(() => window.scroll(0,0))}>
                 {loading ? "LODAING..." : "REGISTER"}
               </Button>
               <div className="log d-flex align-items-center">
