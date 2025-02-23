@@ -30,10 +30,10 @@ export default function Register() {
             theme: "light",
             transition: Bounce,
             });
-            navigate('/login');
+            navigate('/auth/login');
         }
       }catch(error){
-        console.log(error);
+        
         if(error.response.status == 409){
           toast.error('Email Already Exists', {
             position: "top-right",
@@ -105,12 +105,12 @@ export default function Register() {
               </FloatingLabel>
               <div className="already d-flex flex-column gap-3">
 
-              <Button className="mt-3 btn " type="submit" disabled={loading} onClick={(() => window.scroll(0,0))}>
+              <Button className="mt-3 btn2 " type="submit" disabled={loading} onClick={(() => window.scroll(0,0))}>
                 {loading ? "LODAING..." : "REGISTER"}
               </Button>
               <div className="log d-flex align-items-center">
 
-              <span>ALREADY USER ? <Link to={'/login'}>LOGIN</Link></span>
+              <span>ALREADY USER ? <Link to={'/auth/login'}>LOGIN</Link></span>
               </div>
               </div>
 

@@ -51,13 +51,13 @@
     
     
 }
-.btn{
+.btn2{
     background-color:  var(--maincolor);
     padding: 11px 35px;
     font-family: var(--mainfont);
     width: fit-content;
 }
-.btn:hover{
+.btn2:hover{
     background-color: var(--maincolor);
     color: white;
 }

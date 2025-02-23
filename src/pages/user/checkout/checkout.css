@@ -1,0 +1,29 @@
+.order-details{
+    background-color: #EDEFF5;
+    width: calc(60% - 30px);
+}
+.form2{
+    width: calc(40% - 30px)
+}
+.img-order img{
+    mix-blend-mode: multiply;
+}
+@media screen and (max-width: 992px) {
+    .order{
+        flex-direction: column !important;
+    }
+    .order-details{
+        width: 100% !important;
+    }
+    .form2{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 450px) {
+    .sub span{
+        font-size: smaller;
+    }
+    .name span{
+        font-size: smaller;
+    }
+}

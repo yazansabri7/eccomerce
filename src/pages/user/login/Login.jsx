@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import loginImage from "../../../assets/login.png";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -17,10 +17,20 @@ export default function Login() {
        const loginUser = async (value) => {
         setLoading(true);
         try{
-
+          
           const response = await axios.post(`https://ecommerce-node4.onrender.com/auth/signin` ,value);
-          console.log(response);
           if(response.status == 200){
+            toast.success(`Login Succsessfully`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+              });
             localStorage.setItem("userToken" , response.data.token);
             navigate('/');
           }
@@ -68,16 +78,19 @@ export default function Login() {
               </FloatingLabel>
               <FloatingLabel controlId="floatingPassword" label="Password">
                 <Form.Control type="password" placeholder="Password" {...register("password" , {required:"Password Is Required"})} />
-              {errors.password?<div className="text-danger">{errors.password.message}</div> : null}
+                
               </FloatingLabel>
+              {errors.password?<div className="text-danger">{errors.password.message}</div> : null}
               <div className="already d-flex flex-column gap-3">
+                <Link to={'/auth/sendCode'} className="text-secondary text-decoration-underline mt-2">Forget Password ?</Link>
+               
 
               <Button className="mt-3 btn2" type="submit" disabled={loading} onClick={(() => window.scroll(0,0))}>
                {loading ? "LOADING ..." : "LOGIN"}
               </Button>
               <div className="log d-flex align-items-center">
 
-              <span>NEW USER ? <Link to={'/register'}>REGISTER</Link></span>
+              <span>NEW USER ? <Link to={'/auth/register'}>REGISTER</Link></span>
               </div>
               </div>
              

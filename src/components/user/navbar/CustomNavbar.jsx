@@ -1,37 +1,87 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
-import navImage from '../../../assets/navLogo.svg'
-import { NavDropdown } from 'react-bootstrap';
-import '../navbar/navbar.css'
-import cart from '../../../assets/cart.svg'
+import React, { useContext, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
+import navImage from "../../../assets/navLogo.svg";
+import { Dropdown, NavDropdown } from "react-bootstrap";
+import "../navbar/navbar.css";
+import cart from "../../../assets/cart.svg";
+import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
+import imageProfile from '../../../assets/profile.jpg'
 export default function CustomNavbar() {
-  return (
-    <Navbar expand="lg" className="z-3 bg-body-tertiary py-3 bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded position-sticky top-0">
-    <Container>
-      <Navbar.Brand href="#home">
-        <img src={navImage} alt="" />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto ms-auto">
-          <Nav.Link as={Link} to={'/'} className='fw-bold'>HOME</Nav.Link>
-          <NavDropdown title="PAGES" id="basic-nav-dropdown">
-            <NavDropdown.Item as={Link} to={'/auth/login'}>LOGIN</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to={'/auth/register'}>REGISTER</NavDropdown.Item>
-          </NavDropdown>
-          <Nav.Link as={Link} to={'/categories'}>CATEGORIES</Nav.Link>
-          <Nav.Link as={Link} to={'/products'}>PRODUCTS</Nav.Link>
-          <Nav.Link href="#home" className='d-none cart-word'>CART</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-      <div className="cart w-25 d-flex justify-content-end">
-        <img src={cart} alt="" className='img-fluid'/>
-      </div>
+  const { cartCount } = useContext(CartContext);
+  const { user, loading } = useContext(UserContext);
+  const [active , setActive] = useState('home')
+  const bar =(link)=>{
+    setActive(link);
 
-    </Container>
-  </Navbar>
-  )
+  }
+  return (
+    <Navbar
+      expand="lg"
+      className="z-3 bg-body-tertiary py-3 bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded position-sticky top-0"
+    >
+      <Container>
+        <Navbar.Brand as={Link} to={"/"}>
+          <img src={navImage} alt="" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto ms-auto ">
+            <Nav.Link as={Link} to={"/"} className={active === 'home' ? 'active3': ''}  onClick={()=>bar('home')}>
+              HOME
+            </Nav.Link>
+            <NavDropdown title="PAGES" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to={"/about"} className={active === 'about' ? 'active3': ''}  onClick={()=>bar('about')}>
+                About
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/profile/info"} className={active === 'profile' ? 'active3': ''}  onClick={()=>bar('profile')} >
+                Profile
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link as={Link} to={"/categories"} className={active === 'categories' ? 'active3': ''}  onClick={()=>bar('categories')}>
+              CATEGORIES
+            </Nav.Link>
+            <Nav.Link as={Link} to={"/products"} className={active === 'pro' ? 'active3': ''}  onClick={()=>bar('pro')}>
+              PRODUCTS
+            </Nav.Link>
+            <div className="cart-info d-flex">
+              <Nav.Link as={Link} to={"/cart"}  className="d-none cart-word ">
+                CART
+                <span className="cart-count">{cartCount}</span>
+              </Nav.Link>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+        <div className="wel text-uppercase d-flex flex-column me-1">
+          {loading? "" :
+          <>
+          <Dropdown>
+      <Dropdown.Toggle className="wel">
+        {user.image.secure_url != null ? <img src={user.image.secure_url}/>:<img src={imageProfile}/>}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item as={Link} to={'/profile/info'} className={active === 'profile' ? 'active3': ''}  onClick={()=>bar('profile')} >Profile</Dropdown.Item>
+        <Dropdown.Item as={Link} to={'/about'} className={active === 'about' ? 'active3': ''}  onClick={()=>bar('about')}>About</Dropdown.Item>
+        
+      </Dropdown.Menu>
+    </Dropdown>
+          </>
+          
+          }
+        </div>
+        <Link
+        
+          className="cart d-flex justify-content-end position-relative py-2"
+          to={"/cart"}
+        >
+          <img src={cart} alt="" className=" me-1 w-100" />
+          <span className="cart-count">{cartCount}</span>
+        </Link>
+      </Container>
+    </Navbar>
+  );
 }

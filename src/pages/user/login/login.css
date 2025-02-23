@@ -34,6 +34,9 @@ span a{
 .log span {
     color: #999;
 }
+.img-for img{
+    width: 5%;
+}
 
 
 @media screen and (max-width: 1180px) {

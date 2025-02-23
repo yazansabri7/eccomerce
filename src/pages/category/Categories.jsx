@@ -6,7 +6,6 @@ import '../category/category.css'
 
 export default function Categories() {
     const {data , isLoading , error} =  USeFetch(`https://ecommerce-node4.onrender.com/categories/active`);
-    console.log(data);
 
 
     if(isLoading){

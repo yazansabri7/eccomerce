@@ -13,6 +13,13 @@
     transform: translateY(-5px);
 
 }
+.active>.page-link{
+    background-color: var(--maincolor);
+    border-color: var(--maincolor);
+}
+.page-link{
+    color: var(--maincolor);
+}
 .name{
     font-size: 16px;
 }
@@ -33,14 +40,7 @@
 
 }
 
-.price span:first-of-type{
-color: #F1352B;
-font-size: 25px;
-}
-.price span:last-of-type{
-    text-decoration: line-through;
-    color: #999;
-}
+
 
 .love span{
     background-color: #fff;

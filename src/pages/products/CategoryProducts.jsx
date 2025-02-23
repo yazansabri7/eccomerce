@@ -10,11 +10,15 @@ import Products from "./Products";
 export default function CategoryProducts() {
     const {categoryId} = useParams();
     const {data , isLoading} = USeFetch(`https://ecommerce-node4.onrender.com/products/category/${categoryId}`);
-  
-
-  if(isLoading){
-    return <Loading/>
-  }
+    console.log(data);
+    
+    
+    if(isLoading){
+      return <Loading/>
+    }
+    if(data.products.length == 0){
+      return <div className="alert alert-warning container fw-bold border">No products in this category</div>
+    }
 
   return (
     <>
@@ -42,8 +46,6 @@ export default function CategoryProducts() {
     
     
             <Link to={`/products/${product._id}`} onClick={(() => window.scroll(0,0))} className="details">Details</Link>
-            
-           
         </div>
       
     )}
