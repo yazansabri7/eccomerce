@@ -1,20 +1,13 @@
 import React, { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
-import cart from '../../../src/assets/cart.svg';
 import navImage from '../../../src/assets/navLogo.svg';
 
 
 export default function NavbarNotLogin() {
    
-    const [active , setActive] = useState('home')
-    const bar =(link)=>{
-      setActive(link);
-  
-    }
+    
     return (
       <Navbar
         expand="lg"

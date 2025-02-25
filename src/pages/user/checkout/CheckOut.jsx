@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../components/user/context/CartContext";
 import Loading from "../../../components/loading/Loading";
-import "../checkout/checkout.css";
+import "./checkout.css";
 import axios from "axios";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";

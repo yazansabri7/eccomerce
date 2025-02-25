@@ -1,13 +1,12 @@
 
+.swiper-button-next:after,
+.swiper-button-prev:after{
+    color: #000;
+}
 
 
-
-@media screen and (max-width:740px){
-    .category-list{
-        flex-direction: column !important;
-        gap: 50px;
-    }
-    .popular{
-        text-align: center !important;
+@media screen and (max-width:500px){
+    .img-category img{
+        width: 90% !important ;
     }
 }

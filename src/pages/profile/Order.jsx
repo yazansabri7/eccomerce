@@ -1,7 +1,8 @@
 import React, {useEffect, useState } from 'react';
 import Loading from '../../components/loading/Loading';
-import '../profile/profile.css';
+import './profile.css';
 import axios from 'axios';
+import { Flip, toast } from 'react-toastify';
 
 
 
@@ -11,6 +12,7 @@ export default function Order() {
   const token = localStorage.getItem('userToken');
   const [order , setOrder] = useState(null);
   const [orderLoading , setOrderLoading] = useState(true);
+  const [loadingCancel , setLoadingCancel] = useState(false)
   
 
   const getOrders = async () => {
@@ -22,8 +24,8 @@ export default function Order() {
           }
         }
       )
-      console.log(response.data.orders);
       setOrder(response.data.orders);
+      console.log(response.data.orders);
 
     }catch(error){
       console.log( error);
@@ -32,16 +34,36 @@ export default function Order() {
     }
     
   }
-  const cancleOrder = async (prodId) => {
+  const cancleOrder = async (orderId) => {
+    setLoadingCancel(true);
     try{
-        const response = await axios.patch(`https://ecommerce-node4.onrender.com/order/cancle/${prodId}`,null,{
+        const response = await axios.patch(`https://ecommerce-node4.onrender.com/order/cancel/${orderId}`,null,{
           headers:{
             Authorization:`Tariq__${token}`
           }
         })
         console.log(response);
+        if(response.status === 200){
+          toast.success('Remove Order Successfully', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Flip,
+          });
+          setOrder(
+            order.filter(orders => orders._id !== orderId)
+        )
+        
+      }
     }catch(error){
       console.log(error);
+    }finally{
+      setLoadingCancel(false);
     }
   }
   useEffect(() => {
@@ -55,6 +77,7 @@ export default function Order() {
         <div className='order-section'>
           <div className='item-order'>
                   {order.map(item  =>
+                  item.status !== 'cancelled' &&
               <div className='order-det py-3 px-3 rounded mb-2 d-flex flex-column gap-4' key={item._id}>
                 <div className='product-det'>
                   {item.products.map(product=>
@@ -92,7 +115,7 @@ export default function Order() {
                   <div className="status-of-order">
                     {item.status === 'deliverd' ? <span className='fw-bold'>Status Order : <span className='text-success'>Delivered</span></span> : <span className='fw-bold'>Status Order : <span className='text-warning'>Pending</span></span>}
                   </div>
-                  {item.status === 'deliverd'? <div className='text-success fw-bold'>Order delivered</div> :<button className='btn btn-danger cancle' onClick={()=>cancleOrder(item._id)}>Cancle Order</button>}
+                  {item.status === 'deliverd'? <div className='text-success fw-bold'>Order delivered</div> :<button className='btn btn-danger cancle' onClick={()=>cancleOrder(item._id)} disabled={loadingCancel}>{loadingCancel ? "Cancel Order...":"Cancel Order"}</button>}
               </div>
                   )}
           </div>

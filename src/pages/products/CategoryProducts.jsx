@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import USeFetch from "../../Hooks/USeFetch";
 import Loading from "../../components/loading/Loading";
 import { Link, useParams } from "react-router-dom";
-import '../products/product.css'
-import axios from "axios";
+import './product.css'
 import love from '../../../src/assets/love.svg'
-import Products from "./Products";
 
 export default function CategoryProducts() {
     const {categoryId} = useParams();

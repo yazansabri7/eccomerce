@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import navImage from "../../../assets/navLogo.svg";
 import { Dropdown, NavDropdown } from "react-bootstrap";
-import "../navbar/navbar.css";
+import "./navbar.css";
 import cart from "../../../assets/cart.svg";
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
@@ -48,7 +48,7 @@ export default function CustomNavbar() {
               PRODUCTS
             </Nav.Link>
             <div className="cart-info d-flex">
-              <Nav.Link as={Link} to={"/cart"}  className="d-none cart-word ">
+              <Nav.Link as={Link} to={"/cart"}  className="d-none cart-word">
                 CART
                 <span className="cart-count">{cartCount}</span>
               </Nav.Link>
@@ -60,7 +60,7 @@ export default function CustomNavbar() {
           <>
           <Dropdown>
       <Dropdown.Toggle className="wel">
-        {user.image.secure_url != null ? <img src={user.image.secure_url}/>:<img src={imageProfile}/>}
+        {user.image?.secure_url != null ? <img src={user.image.secure_url}/>:<img src={imageProfile}/>}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

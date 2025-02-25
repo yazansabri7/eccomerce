@@ -5,9 +5,9 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Bounce, Slide, toast } from "react-toastify";
+import { Bounce,  toast } from "react-toastify";
 import registerImage from "../../../assets/login.png";
-import '../register/register.css'
+import './register.css'
 
 export default function Register() {
   const navigate = useNavigate();

@@ -14,7 +14,6 @@ import ProductDetails from "./pages/products/ProductDetails";
 import Cart from "./pages/user/cart/Cart";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CartContextProvider from "./components/user/context/CartContext";
-
 import UserContextProvider from "./components/user/context/UserContext";
 import ProfileInfo from "./pages/profile/ProfileInfo";
 import Order from "./pages/profile/Order";

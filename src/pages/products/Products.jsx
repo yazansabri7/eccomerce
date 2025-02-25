@@ -1,21 +1,57 @@
 import React, { useEffect, useState } from "react";
-import USeFetch from "../../Hooks/USeFetch";
 import Loading from "../../components/loading/Loading";
 import { Link } from "react-router-dom";
-import '../products/product.css'
+import './product.css'
 import love from '../../../src/assets/love.svg'
 import Pagination from 'react-bootstrap/Pagination';
 import axios from "axios";
+import { Container, FloatingLabel, Form } from "react-bootstrap";
+import { Flip, toast } from "react-toastify";
 
 
 export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading ,setLoading] = useState(true);
   const [data , setData] = useState([]);
+  const [sort ,setSort] = useState(null);
+  const [max , setMax]= useState(9999999);  
+  const [min , setMin]= useState(0); 
+  const [serach , setSerach] = useState(null);
+
+  const serachWord = (e) => {
+    e.preventDefault();
+
+    getProducts();
+  }
+  const minMax = (e) => {
+    e.preventDefault();
+    if(max>min)
+    {
+      getProducts();
+    }
+    else{
+      toast.warn('Max Price should Be Greater Than Min Price', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Flip,
+        });
+    }
+  } 
+
+  const sortProducts =  (e) => {
+    e.preventDefault();
+    setSort(e.target.value);
+  }
   const getProducts = async () => {
     setLoading(true);
     try{
-      const {data} = await axios.get(`https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5`);
+      const {data} = await axios.get(`https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5&sort=${sort}&price[gte]=${min}&price[lte]=${max}%search=${serach}`);
       setData(data);
 
     }catch(error){
@@ -39,14 +75,49 @@ export default function Products() {
     };
     useEffect(()=> {
       getProducts();
-    },[currentPage])
+    },[currentPage , sort])
   if (loading) {
     return <Loading />;
   }
 
   return (
     <>
+    
+    <Container>
+      <div className="form">
+        <Form>
+            <Form.Select aria-label="Default select example" onChange={sortProducts} value={sort}>
+              <option value=''>Sort By</option>
+              <option value="name">Name</option>
+              <option value="-name">Name desc</option>
+              <option value="price">Min Price To Max Price</option>
+              <option value="-price">Max Price To Min Price</option>
+              <option value="discount">Min Discount To Max Discount</option>
+              <option value="-discount">Max Discount To Min Discount</option>
+            </Form.Select>
+            <div className="max-min" >
+              <Form.Group className="mb-3 d-flex align-items-center" controlId="formBasicEmail" >
+                <Form.Label>Enter Min Price</Form.Label>
+                <Form.Control type="text" placeholder="" onChange={(e)=> setMin(e.target.value)}  />
+                
+            </Form.Group>
+              <Form.Group className="mb-3 d-flex align-items-center " controlId="formBasicEmail">
+                <Form.Label>Enter Max Price</Form.Label>
+                <Form.Control type="text" placeholder="" onChange={(e)=> setMax(e.target.value)}  />
+                
+            </Form.Group>
+            <button  className="clearBtn" onClick={minMax}>Go</button>
+            </div>
+            <div className="search">
+                <FloatingLabel controlId="floatingPassword" label="Serach">
+                 <Form.Control type="search" placeholder="" onChange={(e)=> setSerach(e.target.value)} value={serach} />
+                </FloatingLabel>
+                <button className="clearBtn" onClick={serachWord}>Search</button>
+            </div>
 
+        </Form>
+      </div>
+    </Container>
       <section className="product">
       <div className=' container d-flex  align-items-stretch flex-wrap py-5 gap-3'>
 
@@ -58,7 +129,7 @@ export default function Products() {
         <img src={love} alt="" />
       </div>
       <div className="img ms-auto me-auto ">
-        <img src={product.mainImage.secure_url} alt="" width={"200px"} />
+        <img src={product.mainImage?.secure_url} alt="" width={"200px"} />
       </div>
         <span className="discount fw-bold rounded px-1">
           {product.discount == 0 ? "" : product.discount +`%`}
@@ -84,15 +155,15 @@ export default function Products() {
   
 )}
 </div>
-                            <Pagination className="d-flex justify-content-center" >
-                                <Pagination.Prev onClick={prevPage} disabled={currentPage === 1} />
-                                {[...Array(numberOfPages)].map((_, index) => (
-                                    <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
-                                        {index + 1}
-                                    </Pagination.Item>
-                                ))}
-                                <Pagination.Next onClick={nextPage} disabled={currentPage === numberOfPages} />
-                            </Pagination>
+        <Pagination className="d-flex justify-content-center" >
+            <Pagination.Prev onClick={prevPage} disabled={currentPage === 1} />
+            {[...Array(numberOfPages)].map((_, index) => (
+                <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
+                    {index + 1}
+                </Pagination.Item>
+            ))}
+            <Pagination.Next onClick={nextPage} disabled={currentPage === numberOfPages} />
+        </Pagination>
       </section>
     </>
   );

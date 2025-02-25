@@ -3,7 +3,7 @@ import Loading from '../../../components/loading/Loading';
 import axios from 'axios';
 import minus from '../../../assets/minus.svg'
 import plus from '../../../assets/plus.svg'
-import '../cart/cart.css'
+import './cart.css'
 import { Button } from 'react-bootstrap';
 import { Flip, toast } from 'react-toastify';
 import { CartContext } from '../../../components/user/context/CartContext';
@@ -213,7 +213,7 @@ export default function Cart() {
                    <img src={minus} alt="" />
                 </button>
                 <div className="image-cart  rounded p-3">
-                <img src={product.details.mainImage.secure_url} width="150px"/>
+                <img src={product.details.mainImage?.secure_url} width="150px"/>
                 </div>
                 <div className="details-product-cart d-flex flex-column justify-content-evenly">
                     <span className='fw-bold mt-3'>{product.details.name}</span>

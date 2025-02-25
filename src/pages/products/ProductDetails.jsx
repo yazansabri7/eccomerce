@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loading from '../../components/loading/Loading';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import '../products/productdetails.css';
+import './productdetails.css';
 import axios from 'axios';
 import { Bounce, toast } from 'react-toastify';
 import { CartContext } from '../../components/user/context/CartContext';

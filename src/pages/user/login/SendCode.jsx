@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import key from '../../../assets/key.svg'
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import '../login/sendcode.css'
+import './sendcode.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
