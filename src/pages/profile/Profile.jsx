@@ -32,7 +32,7 @@ export default function Profile() {
  
        <div className="img-profile d-flex flex-column justify-content-between rounded px-2 py-2 gap-4 " width="250px">
          <div className="personal d-flex flex-column gap-2 ">
-            {user.image?.secure_url != null ? <img src={user.image.secure_url}/>: <img src={imageProfile}/>} 
+            {user?.image?.secure_url != null ? <img src={user.image.secure_url}/>: <img src={imageProfile}/>} 
          </div>
          <div className="Links d-flex flex-column gap-3">
              <Link to={'/profile/info'} className={active === 'info' ? 'active2': ''}  onClick={()=>bar('info')}>Account Info</Link>

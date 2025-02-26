@@ -207,7 +207,7 @@ export default function Cart() {
 
         
         <div className='product-in-cart d-flex flex-column'>
-            {dataProduct.map(product =>
+            {dataProduct?.map(product =>
             <div className="d-flex  details-product px-2 py-3 rounded mt-2 gap-3 position-relative ">
                 <button className='remove-item' onClick={()=>(removeItem(product.productId))} disabled={isLoading}>
                    <img src={minus} alt="" />
