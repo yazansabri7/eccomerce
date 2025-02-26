@@ -25,7 +25,6 @@ export default function Order() {
         }
       )
       setOrder(response.data.orders);
-      console.log(response.data.orders);
 
     }catch(error){
       console.log( error);
@@ -42,7 +41,6 @@ export default function Order() {
             Authorization:`Tariq__${token}`
           }
         })
-        console.log(response);
         if(response.status === 200){
           toast.success('Remove Order Successfully', {
             position: "top-right",

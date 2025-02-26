@@ -26,7 +26,6 @@ export default function CheckOut() {
                 Authorization:`Tariq__${token}`
             }
         });
-        console.log(response);
         if(response.status === 201){
             toast.success('The order has been approvedr ', {
                 position: "top-right",
@@ -84,7 +83,7 @@ export default function CheckOut() {
               <span className="text-uppercase text-secondary">Sub Total</span>
             </div>
             {cart.products.map((product) => (
-              <div className="price-for d-flex justify-content-between align-items-center border-bottom pb-2">
+              <div className="price-for d-flex justify-content-between align-items-center border-bottom pb-2" key={product._id}>
                 <div className="order-item d-flex align-items-center gap-3">
                   <div className="img-order">
                     <img

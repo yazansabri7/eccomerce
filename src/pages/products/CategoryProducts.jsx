@@ -8,7 +8,6 @@ import love from '../../../src/assets/love.svg'
 export default function CategoryProducts() {
     const {categoryId} = useParams();
     const {data , isLoading} = USeFetch(`https://ecommerce-node4.onrender.com/products/category/${categoryId}`);
-    console.log(data);
     
     
     if(isLoading){

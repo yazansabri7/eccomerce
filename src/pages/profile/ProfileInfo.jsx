@@ -51,11 +51,11 @@ export default function ProfileInfo() {
   return(
    <>
   <div className='userInfo d-flex flex-column gap-4'>
-   <span className='fw-bold'>User Id : <span className='fw-normal'>{user._id}</span></span>
-   <span className='fw-bold'>Email : <span className='fw-normal'>{user.email}</span></span>
-   <span className='fw-bold'> Name : <span className='fw-normal'>{user.userName}</span></span>
-   <span className='fw-bold'> Joined At : <span className='fw-normal'>{new Date(user.createdAt).toLocaleString()}</span></span>
-   <span className='fw-bold'> Last Change Password : <span className='fw-normal'>{new Date(user.changePasswordTime).toLocaleString()}</span></span>
+   <span className='fw-bold'>User Id : <span className='fw-normal'>{user?._id}</span></span>
+   <span className='fw-bold'>Email : <span className='fw-normal'>{user?.email}</span></span>
+   <span className='fw-bold'> Name : <span className='fw-normal'>{user?.userName}</span></span>
+   <span className='fw-bold'> Joined At : <span className='fw-normal'>{new Date(user?.createdAt).toLocaleString()}</span></span>
+   <span className='fw-bold'> Last Change Password : <span className='fw-normal'>{new Date(user?.changePasswordTime).toLocaleString()}</span></span>
    <Form onSubmit={handleSubmit(updateImage)}>
       <Form.Group controlId='updateImage' encType='multipart/form-data'>
          <Form.Label className='fw-bold mt-3'>Update Profile Image</Form.Label>

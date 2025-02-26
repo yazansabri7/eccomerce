@@ -18,7 +18,6 @@ export default function SendCode() {
     try{
         setLoading(true);
         const response = await axios.patch(`https://ecommerce-node4.onrender.com/auth/sendcode`,data);
-        console.log(data);
         if(response.status == 200){
             toast.info('Please check Your Email To Get Code', {
                 position: "top-right",

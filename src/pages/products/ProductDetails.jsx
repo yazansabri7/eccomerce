@@ -36,7 +36,6 @@ export default function ProductDetails() {
           Authorization:`Tariq__${token}`
         }
       })
-      console.log(response);
       if(response.status == 201){
         toast.success('Review Added Succseesfully ', {
           position: "top-right",
