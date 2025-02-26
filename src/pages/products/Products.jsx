@@ -14,8 +14,8 @@ export default function Products() {
   const [loading ,setLoading] = useState(true);
   const [data , setData] = useState([]);
   const [sort ,setSort] = useState(null);
-  const [max , setMax]= useState(9999999);  
-  const [min , setMin]= useState(0); 
+  const [max , setMax]= useState(null);  
+  const [min , setMin]= useState(null); 
   const [serach , setSerach] = useState(null);
 
   const serachWord = (e) => {
@@ -51,7 +51,20 @@ export default function Products() {
   const getProducts = async () => {
     setLoading(true);
     try{
-      const {data} = await axios.get(`https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5&sort=${sort}&price[gte]=${min}&price[lte]=${max}%search=${serach}`);
+      let url =`https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5`;
+      if(sort){
+        url+= `&sort=${sort}`;
+      }
+      if(min !== null){
+        url+= `&price[gte]=${min}`;
+      }
+      if(max !== null){
+        url+= `&price[lte]=${max}`;
+      }
+      if(serach){
+        url+= `&search=${serach}`;
+      }
+      const {data} = await axios.get(url);
       setData(data);
 
     }catch(error){
@@ -85,8 +98,8 @@ export default function Products() {
     
     <Container>
       <div className="form">
-        <Form>
-            <Form.Select aria-label="Default select example" onChange={sortProducts} value={sort}>
+        <Form className="formProduct d-flex justify-content-between align-items-center py-2 px-2 border rounded">
+            <Form.Select aria-label="Default select example" onChange={sortProducts} value={sort} className="sort">
               <option value=''>Sort By</option>
               <option value="name">Name</option>
               <option value="-name">Name desc</option>
@@ -95,24 +108,24 @@ export default function Products() {
               <option value="discount">Min Discount To Max Discount</option>
               <option value="-discount">Max Discount To Min Discount</option>
             </Form.Select>
-            <div className="max-min" >
-              <Form.Group className="mb-3 d-flex align-items-center" controlId="formBasicEmail" >
-                <Form.Label>Enter Min Price</Form.Label>
+            <div className="max-min d-flex gap-2" >
+              <Form.Group className=" d-flex gap-1 align-items-center" controlId="formBasicEmail" >
+                <Form.Label className="m-0"> Min </Form.Label>
                 <Form.Control type="text" placeholder="" onChange={(e)=> setMin(e.target.value)}  />
                 
             </Form.Group>
-              <Form.Group className="mb-3 d-flex align-items-center " controlId="formBasicEmail">
-                <Form.Label>Enter Max Price</Form.Label>
+              <Form.Group className=" d-flex align-items-center gap-1 " controlId="formBasicEmail">
+                <Form.Label className="m-0">Max</Form.Label>
                 <Form.Control type="text" placeholder="" onChange={(e)=> setMax(e.target.value)}  />
                 
             </Form.Group>
-            <button  className="clearBtn" onClick={minMax}>Go</button>
+            <button  className=" clearBtn2" onClick={minMax}>Go</button>
             </div>
-            <div className="search">
+            <div className="search d-flex align-items-center  gap-1">
                 <FloatingLabel controlId="floatingPassword" label="Serach">
                  <Form.Control type="search" placeholder="" onChange={(e)=> setSerach(e.target.value)} value={serach} />
                 </FloatingLabel>
-                <button className="clearBtn" onClick={serachWord}>Search</button>
+                <button className=" clearBtn2" onClick={serachWord}>Search</button>
             </div>
 
         </Form>
@@ -121,7 +134,7 @@ export default function Products() {
       <section className="product">
       <div className=' container d-flex  align-items-stretch flex-wrap py-5 gap-3'>
 
-{data.products.map(product =>
+{data?.products?.map(product =>
  
     <div className="product-item d-flex flex-column justify-content-between gap-2  "  key={product.id}>
       <div className="love d-flex justify-content-between">

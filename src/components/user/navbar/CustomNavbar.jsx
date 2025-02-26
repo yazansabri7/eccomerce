@@ -60,7 +60,7 @@ export default function CustomNavbar() {
           <>
           <Dropdown>
       <Dropdown.Toggle className="wel">
-        {user.image?.secure_url != null ? <img src={user.image.secure_url}/>:<img src={imageProfile}/>}
+        {user?.image?.secure_url != null ? <img src={user.image.secure_url}/>:<img src={imageProfile}/>}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

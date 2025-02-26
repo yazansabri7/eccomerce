@@ -21,7 +21,7 @@ const UserContextProvider = ({children}) => {
             setUser(response.data.user);
         }catch(error){
             console.log(error);
-            console.log("hello is error")
+         
         }finally{
             setLoading(false);
         }

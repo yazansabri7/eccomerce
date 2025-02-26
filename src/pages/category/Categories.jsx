@@ -40,7 +40,7 @@ export default function Categories() {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {data.categories.map(category=> <SwiperSlide  key={category._id}>
+      {data?.categories?.map(category=> <SwiperSlide  key={category._id}>
         <div className="img-category w-100">
         <Link to={`/categories/${category._id}`}>
         <img src={category.image?.secure_url} className='w-50' /> 
