@@ -3,7 +3,9 @@
 .swiper-button-prev:after{
     color: #000;
 }
-
+.img-category img{
+    width: 30% !important;
+}
 
 @media screen and (max-width:500px){
     .img-category img{

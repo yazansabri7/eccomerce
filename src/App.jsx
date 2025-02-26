@@ -22,6 +22,7 @@ import SendCode from "./pages/user/login/SendCode";
 import ResetPassword from "./pages/user/login/ResetPassword";
 import AuthProtectedRoute from "./pages/user/AuthProtectedRoute";
 import CheckOut from "./pages/user/checkout/CheckOut";
+import Contact from "./pages/user/contact/Contact";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -55,11 +56,13 @@ export default function App() {
     {
       path: "/",
       element:
-      <UserContextProvider>
-<CartContextProvider>
-      <UserLayout />
-</CartContextProvider>
-      </UserContextProvider>,
+      <ProtectedRoute>
+        <UserContextProvider>
+          <CartContextProvider>
+            <UserLayout />
+          </CartContextProvider>
+        </UserContextProvider>
+      </ProtectedRoute>,
       children: [
         {
           path: "/",
@@ -76,6 +79,10 @@ export default function App() {
         {
           path: "products",
           element: <Products />,
+        },
+        {
+          path:'contact',
+          element:<Contact/>
         },
         {
           path:"profile",
@@ -100,11 +107,7 @@ export default function App() {
         },
         {
           path: "cart",
-          element: (
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          ),
+          element:<Cart />,
         },
         {
           path:"checkOut",

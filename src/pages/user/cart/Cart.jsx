@@ -213,19 +213,19 @@ export default function Cart() {
                    <img src={minus} alt="" />
                 </button>
                 <div className="image-cart  rounded p-3">
-                <img src={product.details.mainImage?.secure_url} width="150px"/>
+                <img src={product?.details?.mainImage?.secure_url} width="150px"/>
                 </div>
                 <div className="details-product-cart d-flex flex-column justify-content-evenly">
-                    <span className='fw-bold mt-3'>{product.details.name}</span>
-                    {product.details.discount != 0 ? 
+                    <span className='fw-bold mt-3'>{product?.details?.name}</span>
+                    {product?.details?.discount != 0 ? 
           <>
           <div className="d-flex align-items-center gap-2">
-          <span className="fw-bold fs-3 text-danger ">{product.details.finalPrice}$</span>
-          <span className=" text-decoration-line-through">{product.details.price}$</span>
+          <span className="fw-bold fs-3 text-danger ">{product?.details?.finalPrice}$</span>
+          <span className=" text-decoration-line-through">{product?.details?.price}$</span>
           </div>
           </> :
           <>
-          <span className="fw-bold fs-3">{product.details.finalPrice}$</span>
+          <span className="fw-bold fs-3">{product?.details?.finalPrice}$</span>
           </>
           }                    <div className="count-product d-flex gap-4 rounded py-2 px-4 align-items-center border">
                         <Button className='counted dis' onClick={()=>decrease(product.productId)} disabled={(countLoading || product.quantity == 1)} ><img src={minus} alt="" /></Button>

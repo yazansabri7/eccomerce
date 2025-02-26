@@ -1,0 +1,18 @@
+.head{
+    padding: 10px 15px;
+    background-color:#EDEFF6 ;
+    border-radius: 10px;
+}
+
+@media screen and (max-width : 810px){
+    .contact{
+        flex-direction: column-reverse !important;
+    }
+    .status{
+        width: 100% !important;
+        display: flex !important;
+    }
+    .form{
+        width: 100% !important;
+    }
+}

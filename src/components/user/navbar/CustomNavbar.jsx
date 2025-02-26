@@ -33,19 +33,15 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={"/"} className={active === 'home' ? 'active3': ''}  onClick={()=>bar('home')}>
               HOME
             </Nav.Link>
-            <NavDropdown title="PAGES" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to={"/about"} className={active === 'about' ? 'active3': ''}  onClick={()=>bar('about')}>
-                About
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/profile/info"} className={active === 'profile' ? 'active3': ''}  onClick={()=>bar('profile')} >
-                Profile
-              </NavDropdown.Item>
-            </NavDropdown>
+            
             <Nav.Link as={Link} to={"/categories"} className={active === 'categories' ? 'active3': ''}  onClick={()=>bar('categories')}>
               CATEGORIES
             </Nav.Link>
             <Nav.Link as={Link} to={"/products"} className={active === 'pro' ? 'active3': ''}  onClick={()=>bar('pro')}>
               PRODUCTS
+            </Nav.Link>
+            <Nav.Link as={Link} to={"/contact"} className={active === 'con' ? 'active3': ''}  onClick={()=>bar('con')}>
+              CONTACT
             </Nav.Link>
             <div className="cart-info d-flex">
               <Nav.Link as={Link} to={"/cart"}  className="d-none cart-word">
@@ -64,9 +60,7 @@ export default function CustomNavbar() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item as={Link} to={'/profile/info'} className={active === 'profile' ? 'active3': ''}  onClick={()=>bar('profile')} >Profile</Dropdown.Item>
-        <Dropdown.Item as={Link} to={'/about'} className={active === 'about' ? 'active3': ''}  onClick={()=>bar('about')}>About</Dropdown.Item>
-        
+        <Dropdown.Item as={Link} to={'/profile/info'} className={active === 'profile' ? 'active3': ''}  onClick={()=>bar('profile')} >Profile</Dropdown.Item>        
       </Dropdown.Menu>
     </Dropdown>
           </>

@@ -70,6 +70,9 @@ export default function Order() {
   if(orderLoading){
     return <Loading/>
   }
+  if(order.length ===0){
+    return <div className='alert alert-warning w-100'>No Orders Yet </div>
+  }
   return (
       <>
         <div className='order-section'>

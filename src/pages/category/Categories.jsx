@@ -34,9 +34,9 @@ export default function Categories() {
 <Swiper
       modules={[Navigation, Pagination, Scrollbar]}
       spaceBetween={50}
-      slidesPerView={3.3}
+      slidesPerView={3.5}
       navigation
-      
+      loop={true}      
     >
       {data?.categories?.map(category=> <SwiperSlide  key={category._id}>
         <div className="img-category w-100">

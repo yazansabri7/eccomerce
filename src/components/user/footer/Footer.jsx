@@ -9,8 +9,8 @@ import instagram from '../../../assets/instagram.svg'
 export default function Footer() {
   return (
     <>
-    <section className='footer1 rounded shadow-sm py-5 mt-4'>
-        <div className="container footer d-flex gap-5 ">
+    <section className='footer1 rounded shadow-sm py-5 mt-4 '>
+        <div className="container footer d-flex gap-5 w-75 m-auto ">
 
         <div className="footer-first d-flex flex-column gap-5">
             <span className='text-uppercase fw-bold fs-5'>Swoo - 1st NYC tech online market</span>

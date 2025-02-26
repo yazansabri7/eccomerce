@@ -18,8 +18,8 @@ export default function CheckOut() {
    const [createLoading , setCreateLoading] = useState(false);
 
    const createOrder = async (data) => {
+     setCreateLoading(true);
     try{
-        setCreateLoading(true);
 
         const response = await axios.post(`https://ecommerce-node4.onrender.com/order`,data,{
             headers:{
@@ -82,7 +82,7 @@ export default function CheckOut() {
               <span className="text-uppercase text-secondary">Product</span>
               <span className="text-uppercase text-secondary">Sub Total</span>
             </div>
-            {cart.products.map((product) => (
+            {cart?.products?.map((product) => (
               <div className="price-for d-flex justify-content-between align-items-center border-bottom pb-2" key={product._id}>
                 <div className="order-item d-flex align-items-center gap-3">
                   <div className="img-order">
